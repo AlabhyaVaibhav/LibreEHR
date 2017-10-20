@@ -160,12 +160,12 @@ Should anything fail during Step 4, you may have to remove the existing database
 #### Step 5
 You will be given instructions on configuring the PHP.  We suggest you print these instructions for future reference.  Instructions are given to edit the `php.ini` configuration file.  If possible, the location of your `php.ini` file will be displayed in green. 
 
-If your `php.ini` file location is not displayed, then you will need to search for it.  The location of the `php.ini` file is dependent on the operating system.  In linux, `php.ini` is generally found inside the `/etc/php/` directory.  In Windows, the `XAMPP` package places the `php.ini` file in the `xampp\apache\bin\` directory. 
+If your `php.ini` file location is not displayed, then you will need to search for it.  The location of the `php.ini` file is dependent on the operating system.  In linux, `php.ini` is generally found inside the `/etc/php/7.0` directory.  In Windows, the `XAMPP` package places the `php.ini` file in the `xampp\apache\bin\` directory. 
 
 To ensure proper functioning of LibreHealthEHR you must make sure that settings in the `php.ini` file include:
 ```
-max_execution_time = 60
-max_input_time = 90
+max_execution_time = 600
+max_input_time = 600
 max_input_vars = 3000
 memory_limit = 512M
 post_max_size = 32M
@@ -181,10 +181,20 @@ Make sure that settings in MYSQL /etc/mysql/my.cnf file include:
 key_buffer_size set to 1024M
 innodb_buffer_pool_size set to 70% of available RAM.
 ```
-If you are using MySQL 5.7 set the SQL Mode to blank for compatibility
+Make sure you have disabled strict mode in Mysql . 
 
+## How to disable Mysql strict mode?
+
+Make the following changes in the `my.ini/my.cnf`:
+Find it here `C:\WAMP\BIN\MYSQL\MySQL Server 5.6\my.ini` OR `C:\xampp\mysql\bin\my.ini` 
+OR (left click ) wampmanager icon -> MYSQL -> my.ini
+In Linux it's typically located in /etc/mysql
+
+    1.  Look for the following line:
+
+    2.  Change it to:
 ```
-sql_mode=
+        sql_mode="" (Blank)
 ```
 
 In order to take full advantage of the patient documents capability you must make sure that settings in `php.ini` file include `file_uploads = On`, that `upload_max_filesize` is appropriate for your use, and that `upload_tmp_dir` is set to a correct value that will work on your system.

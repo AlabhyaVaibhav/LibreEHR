@@ -529,8 +529,8 @@ echo "<li>To ensure proper functioning of LibreHealth EHR you must make sure tha
 <ul>
 <li>\"short_open_tag = On\"</li>
 <li>\"display_errors = Off\"</li>
-<li>\"max_execution_time\" set to at least 60</li>
-<li>\"max_input_time\" set to at least 90</li>
+<li>\"max_execution_time\" set to at least 600</li>
+<li>\"max_input_time\" set to at least 600</li>
 <li>\"max_input_vars\" set to at least 3000</li>
 <li>\"post_max_size\" set to at least 32M</li>
 <li>\"memory_limit\" set to at least 512M</li>
